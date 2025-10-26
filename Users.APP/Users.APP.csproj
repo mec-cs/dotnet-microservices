@@ -11,6 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="MediatR" Version="13.1.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.10" />
       <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     </ItemGroup>
