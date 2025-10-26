@@ -40,11 +40,13 @@ namespace Users.API.Controllers
             
             _db.Roles.Add(new Role()
             {
-                Name = "Admin"
+                Name = "Admin",
+                Guid = Guid.NewGuid().ToString(),
             });
             _db.Roles.Add(new Role()
             {
-                Name = "User"
+                Name = "User",
+                Guid = Guid.NewGuid().ToString(),
             });
 
             _db.SaveChanges();
@@ -52,6 +54,7 @@ namespace Users.API.Controllers
             _db.Groups.Add(new Group()
             {
                 Title = "General",
+                Guid = Guid.NewGuid().ToString(),
                 Users = new List<User>()
                 {
                     new User()
@@ -72,7 +75,7 @@ namespace Users.API.Controllers
                         UserRoles = new List<UserRole>()
                         {
                             // Assign Admin role to this user
-                            new UserRole() { RoleId = _db.Roles.SingleOrDefault(r => r.Name == "Admin").Id }
+                            new UserRole() { RoleId = _db.Roles.SingleOrDefault(r => r.Name == "Admin").Id, Guid = Guid.NewGuid().ToString() }
                         }
                     },
                     new User()
@@ -92,7 +95,7 @@ namespace Users.API.Controllers
                         UserRoles = new List<UserRole>()
                         {
                             // Assign User role to this user
-                            new UserRole() { RoleId = _db.Roles.SingleOrDefault(r => r.Name == "User").Id }
+                            new UserRole() { RoleId = _db.Roles.SingleOrDefault(r => r.Name == "User").Id, Guid = Guid.NewGuid().ToString() }
                         }
                     },
                 }
