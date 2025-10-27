@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-builder.Services.AddDbContext<DbContext, LocationsDb>(options => options.UseSqlite(builder.Configuration.GetConnectionString("UsersDb")));
+builder.Services.AddDbContext<DbContext, LocationsDb>(options => options.UseSqlite(builder.Configuration.GetConnectionString("LocationsDb")));
 
 foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
 {
