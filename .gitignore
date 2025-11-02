@@ -6,3 +6,5 @@ riderModule.iml
 .idea/
 DotNetMicroservices.sln.DotSettings.user
 identifier.sqlite
+*-shm
+*-wal
