@@ -1,7 +1,7 @@
 using Core.APP.Models;
 using MediatR;
 
-namespace Patients.APP.Features;
+namespace Patients.APP.Features.Patients;
 
 public class PatientsCreateHandler: Request, IRequest<CommandResponse>
 {

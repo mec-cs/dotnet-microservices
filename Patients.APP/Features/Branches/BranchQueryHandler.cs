@@ -17,16 +17,16 @@ namespace Patients.APP.Features.Branches
         public string Doctors { get; set; }
     }
 
-    public class BranchesQueryHandler : Service<Branch>, IRequestHandler<BranchQueryRequest, IQueryable<BranchQueryResponse>>
+    public class BranchQueryHandler : Service<Branch>, IRequestHandler<BranchQueryRequest, IQueryable<BranchQueryResponse>>
     {
-        public BranchesQueryHandler(DbContext db) : base(db)
+        public BranchQueryHandler(DbContext db) : base(db)
         {
         }
         
         protected override IQueryable<Branch> Query(bool isNoTracking = true)
         {
             return base.Query(isNoTracking)
-                .Include(b => b.Doctors).ThenInclude(dr => dr.DoctorPatients).ThenInclude(dp => dp.Patient)
+                .Include(b => b.Doctors)
                 .OrderBy(r => r.Title);
         }
         
@@ -38,7 +38,7 @@ namespace Patients.APP.Features.Branches
                 Guid = b.Guid,
                 Title = b.Title,
                 DoctorCount = b.Doctors.Count,
-                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Id)),
+                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Id.ToString()))
 ß            });
 
             return Task.FromResult(query);

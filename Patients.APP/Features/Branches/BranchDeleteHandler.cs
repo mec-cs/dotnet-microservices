@@ -9,9 +9,9 @@ namespace Patients.APP.Features.Branches
     public class BranchesDeleteRequest : Request, IRequest<CommandResponse> {}
 
 
-    public class BranchesDeleteHandler : Service<Branch>, IRequestHandler<BranchesDeleteRequest, CommandResponse>
+    public class BranchDeleteHandler : Service<Branch>, IRequestHandler<BranchesDeleteRequest, CommandResponse>
     {
-        public BranchesDeleteHandler(DbContext db) : base(db) { }
+        public BranchDeleteHandler(DbContext db) : base(db) { }
     
         protected override IQueryable<Branch> Query(bool isNoTracking = true)
         {

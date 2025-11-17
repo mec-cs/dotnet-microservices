@@ -13,9 +13,9 @@ namespace Patients.APP.Features.Branches
     
     }
 
-    public class BranchesCreateHandler: Service<Domain.Branch>, IRequestHandler<BranchesCreateRequest, CommandResponse>
+    public class BranchCreateHandler: Service<Domain.Branch>, IRequestHandler<BranchesCreateRequest, CommandResponse>
     {
-        public BranchesCreateHandler(DbContext db) : base(db) { }
+        public BranchCreateHandler(DbContext db) : base(db) { }
 
         public async Task<CommandResponse> Handle(BranchesCreateRequest request, CancellationToken cancellationToken)
         {
