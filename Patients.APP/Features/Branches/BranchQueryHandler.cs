@@ -6,8 +6,6 @@ using Patients.APP.Domain;
 
 namespace Patients.APP.Features.Branches
 {
-    public class BranchQueryRequest : Request, IRequest<IQueryable<BranchQueryResponse>> {}
-
     public class BranchQueryResponse : Response
     {
         public string Title { get; set; }
@@ -16,12 +14,12 @@ namespace Patients.APP.Features.Branches
 
         public string Doctors { get; set; }
     }
+    
+    public class BranchQueryRequest : Request, IRequest<IQueryable<BranchQueryResponse>> { }
 
     public class BranchQueryHandler : Service<Branch>, IRequestHandler<BranchQueryRequest, IQueryable<BranchQueryResponse>>
     {
-        public BranchQueryHandler(DbContext db) : base(db)
-        {
-        }
+        public BranchQueryHandler(DbContext db) : base(db) { }
         
         protected override IQueryable<Branch> Query(bool isNoTracking = true)
         {
@@ -37,9 +35,10 @@ namespace Patients.APP.Features.Branches
                 Id = b.Id,
                 Guid = b.Guid,
                 Title = b.Title,
+                
                 DoctorCount = b.Doctors.Count,
-                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Id.ToString()))
-ß            });
+                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Name))
+            });
 
             return Task.FromResult(query);
         }

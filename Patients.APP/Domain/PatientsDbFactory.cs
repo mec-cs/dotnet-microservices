@@ -5,7 +5,7 @@ namespace Patients.APP.Domain;
 
 public class PatientsDbFactory : IDesignTimeDbContextFactory<PatientsDb>
 {
-    const string CONNECTIONSTRING = "data source=LocationsDB";
+    const string CONNECTIONSTRING = "data source=PatientsDB";
         
     public PatientsDb CreateDbContext(string[] args)
     {

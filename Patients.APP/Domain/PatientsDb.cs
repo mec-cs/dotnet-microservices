@@ -35,7 +35,7 @@ public class PatientsDb : DbContext
         
         modelBuilder.Entity<DoctorPatient>()
             .HasOne(doctorPatientEntity => doctorPatientEntity.Patient)
-            .WithMany(patientEntity => patientEntity.DoctorPatients)
+            .WithMany(patientEntity => patientEntity.PatientDoctors)
             .HasForeignKey(doctorPatientEntity => doctorPatientEntity.PatientId)
             .OnDelete(DeleteBehavior.Restrict);
     }
