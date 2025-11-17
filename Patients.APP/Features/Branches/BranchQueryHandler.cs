@@ -1,0 +1,47 @@
+using Core.APP.Models;
+using Core.APP.Services;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Patients.APP.Domain;
+
+namespace Patients.APP.Features.Branches
+{
+    public class BranchQueryRequest : Request, IRequest<IQueryable<BranchQueryResponse>> {}
+
+    public class BranchQueryResponse : Response
+    {
+        public string Title { get; set; }
+        
+        public int DoctorCount { get; set; }
+
+        public string Doctors { get; set; }
+    }
+
+    public class BranchesQueryHandler : Service<Branch>, IRequestHandler<BranchQueryRequest, IQueryable<BranchQueryResponse>>
+    {
+        public BranchesQueryHandler(DbContext db) : base(db)
+        {
+        }
+        
+        protected override IQueryable<Branch> Query(bool isNoTracking = true)
+        {
+            return base.Query(isNoTracking)
+                .Include(b => b.Doctors).ThenInclude(dr => dr.DoctorPatients).ThenInclude(dp => dp.Patient)
+                .OrderBy(r => r.Title);
+        }
+        
+        public Task<IQueryable<BranchQueryResponse>> Handle(BranchQueryRequest request, CancellationToken cancellationToken)
+        {
+            var query = Query().Select(b => new BranchQueryResponse()
+            {
+                Id = b.Id,
+                Guid = b.Guid,
+                Title = b.Title,
+                DoctorCount = b.Doctors.Count,
+                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Id)),
+ß            });
+
+            return Task.FromResult(query);
+        }
+    }    
+}
