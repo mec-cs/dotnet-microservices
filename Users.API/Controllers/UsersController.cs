@@ -1,7 +1,6 @@
 #nullable disable
 using Core.APP.Models;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Users.APP.Features.Users;
@@ -22,7 +21,6 @@ namespace Users.API.Controllers
         }
         
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> Get()
         {
             try
@@ -43,7 +41,6 @@ namespace Users.API.Controllers
         }
         
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -64,7 +61,6 @@ namespace Users.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post(UserCreateRequest request)
         {
             try
@@ -89,7 +85,6 @@ namespace Users.API.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(UserUpdateRequest request)
         {
             try
@@ -114,7 +109,6 @@ namespace Users.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -135,7 +129,6 @@ namespace Users.API.Controllers
         }
         
         [HttpPost("[action]")]
-        [Authorize]
         public async Task<IActionResult> GetFiltered(UserQueryRequest request)
         {
             var response = await _mediator.Send(request);
