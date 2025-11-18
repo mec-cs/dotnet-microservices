@@ -25,7 +25,7 @@ namespace Patients.APP.Features.Patients
         {
             return base.Query(isNoTracking)
                 .Include(p => p.PatientDoctors).ThenInclude(pd => pd.Doctor)
-                .OrderBy(r => r.Name);
+                .OrderBy(p => p.Id);
         }
 
         public Task<IQueryable<PatientQueryResponse>> Handle(PatientQueryRequest request, CancellationToken cancellationToken)
@@ -34,10 +34,9 @@ namespace Patients.APP.Features.Patients
             {
                 Id = p.Id,
                 Guid = p.Guid,
-                Name = p.Name,
                 
                 DoctorCount = p.PatientDoctors.Count,
-                Doctors = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Name))
+                Doctors = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id))
             });
 
             return Task.FromResult(query);

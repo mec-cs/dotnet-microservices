@@ -14,7 +14,7 @@ namespace Patients.APP.Features.Patients
         
         protected override IQueryable<Patient> Query(bool isNoTracking = true)
         {
-            return base.Query().Include(p => p.PatientDoctors).ThenInclude(dp => dp.Doctor).OrderBy(p => p.Name);
+            return base.Query().Include(p => p.PatientDoctors).ThenInclude(dp => dp.Doctor).OrderBy(p => p.Id);
         }
 
         public async Task<CommandResponse> Handle(PatientDeleteRequest request, CancellationToken cancellationToken)

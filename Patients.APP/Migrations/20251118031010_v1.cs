@@ -32,7 +32,6 @@ namespace Patients.APP.Migrations
                     BranchId = table.Column<int>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     GroupId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false),
                     Guid = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -52,7 +51,6 @@ namespace Patients.APP.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false),
                     Height = table.Column<decimal>(type: "TEXT", nullable: true),
                     Weight = table.Column<decimal>(type: "TEXT", nullable: true),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),

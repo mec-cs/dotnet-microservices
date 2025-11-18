@@ -16,9 +16,6 @@ namespace Patients.APP.Features.Doctors
         
         [Required]
         public int BranchId { get; set; }
-        
-        [Required, StringLength(25)]
-        public string Name { get; set; }
     }
     
     public class DoctorCreateHandler : Service<Doctor>, IRequestHandler<DoctorCreateRequest, CommandResponse>
@@ -29,12 +26,11 @@ namespace Patients.APP.Features.Doctors
 
         public async Task<CommandResponse> Handle(DoctorCreateRequest request, CancellationToken cancellationToken)
         {
-            if (await Query().AnyAsync(doctor => doctor.UserId == request.UserId || doctor.Name == request.Name.Trim(), cancellationToken))
+            if (await Query().AnyAsync(doctor => doctor.UserId == request.UserId, cancellationToken))
                 return Error("Doctor with the same User ID exists!");
 
             var entity = new Doctor()
             {
-                Name = request.Name,
                 UserId = request.UserId,
                 GroupId = request.GroupId,
                 BranchId = request.BranchId

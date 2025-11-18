@@ -24,14 +24,13 @@ namespace Patients.APP.Features.Patients
         public async Task<CommandResponse> Handle(PatientUpdateRequest request, CancellationToken cancellationToken)
         {
             
-            if (await Query().AnyAsync(r => r.Id != request.Id && r.Name == request.Name.Trim(), cancellationToken))
+            if (await Query().AnyAsync(r => r.Id != request.Id, cancellationToken))
                 return Error("Patient with the same name exists!");
             
             var entity = await Query(false).SingleOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
             if (entity is null)
                 return Error("Patient not found!");
             
-            entity.Name = request.Name.Trim();
             entity.Weight = request.Weight;
             entity.Height = request.Height;
             

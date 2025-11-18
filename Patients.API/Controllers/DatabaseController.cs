@@ -81,7 +81,6 @@ namespace Patients.API.Controllers
             var doctor1 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. John Smith",
                 UserId = 1,
                 GroupId = 1,
                 BranchId = cardiologyBranch.Id
@@ -90,7 +89,6 @@ namespace Patients.API.Controllers
             var doctor2 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. Sarah Johnson",
                 UserId = 2,
                 GroupId = 1,
                 BranchId = cardiologyBranch.Id
@@ -99,7 +97,6 @@ namespace Patients.API.Controllers
             var doctor3 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. Michael Brown",
                 UserId = 3,
                 GroupId = 1,
                 BranchId = neurologyBranch.Id
@@ -108,7 +105,6 @@ namespace Patients.API.Controllers
             var doctor4 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. Emily Davis",
                 UserId = 4,
                 GroupId = 1,
                 BranchId = pediatricsBranch.Id
@@ -117,7 +113,6 @@ namespace Patients.API.Controllers
             var doctor5 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. Robert Wilson",
                 UserId = 5,
                 GroupId = 1,
                 BranchId = orthopedicsBranch.Id
@@ -126,7 +121,6 @@ namespace Patients.API.Controllers
             var doctor6 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Dr. Lisa Anderson",
                 UserId = 6,
                 GroupId = 1,
                 BranchId = dermatologyBranch.Id
@@ -145,7 +139,6 @@ namespace Patients.API.Controllers
             var patient1 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Alice Thompson",
                 Height = 165.5m,
                 Weight = 68.2m,
                 UserId = 10,
@@ -155,7 +148,6 @@ namespace Patients.API.Controllers
             var patient2 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Bob Martinez",
                 Height = 178.0m,
                 Weight = 82.5m,
                 UserId = 11,
@@ -165,7 +157,6 @@ namespace Patients.API.Controllers
             var patient3 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Carol White",
                 Height = 160.0m,
                 Weight = 55.8m,
                 UserId = 12,
@@ -175,7 +166,6 @@ namespace Patients.API.Controllers
             var patient4 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "David Lee",
                 Height = 175.3m,
                 Weight = 75.0m,
                 UserId = 13,
@@ -185,7 +175,6 @@ namespace Patients.API.Controllers
             var patient5 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Emma Garcia",
                 Height = 162.7m,
                 Weight = 60.3m,
                 UserId = 14,
@@ -195,7 +184,6 @@ namespace Patients.API.Controllers
             var patient6 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Frank Taylor",
                 Height = 180.5m,
                 Weight = 88.9m,
                 UserId = 15,
@@ -205,7 +193,6 @@ namespace Patients.API.Controllers
             var patient7 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Grace Miller",
                 Height = 158.2m,
                 Weight = 52.4m,
                 UserId = 16,
@@ -215,7 +202,6 @@ namespace Patients.API.Controllers
             var patient8 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
-                Name = "Henry Clark",
                 Height = 172.8m,
                 Weight = 79.6m,
                 UserId = 17,

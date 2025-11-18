@@ -13,9 +13,6 @@ public class Doctor: Entity
     
     public int GroupId { get; set; }
     
-    [Required, StringLength(25)]
-    public string Name { get; set; }
-    
     [Required] 
     public Branch Branch { get; set; }
     

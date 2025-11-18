@@ -37,7 +37,7 @@ namespace Patients.APP.Features.Branches
                 Title = b.Title,
                 
                 DoctorCount = b.Doctors.Count,
-                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Name))
+                Doctors = string.Join(", ", b.Doctors.Select(dr => dr.Id))
             });
 
             return Task.FromResult(query);

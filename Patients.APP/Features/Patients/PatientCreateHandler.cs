@@ -9,9 +9,6 @@ namespace Patients.APP.Features.Patients
 {
     public class PatientCreateRequest: Request, IRequest<CommandResponse>
     {
-        [Required, StringLength(25)]
-        public string Name { get; set; }
-        
         public decimal? Height { get; set; }
         public decimal? Weight { get; set; }
         
@@ -27,12 +24,8 @@ namespace Patients.APP.Features.Patients
         
         public async Task<CommandResponse> Handle(PatientCreateRequest request, CancellationToken cancellationToken)
         {
-            if (await Query().AnyAsync(p => p.Name == request.Name.Trim(), cancellationToken))
-                return Error("Patient with the same name exists!");
-
             var entity = new Patient()
             {
-                Name = request.Name.Trim(),
                 Height = request.Height,
                 Weight = request.Weight,
                 UserId = request.UserId,
