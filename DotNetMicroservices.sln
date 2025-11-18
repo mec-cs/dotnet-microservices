@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.APP", "Locations.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patients.APP", "Patients.APP\Patients.APP.csproj", "{A1FB2EE8-F2F6-4BDA-B4F0-715873B23462}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patients.API", "Patients.API\Patients.API.csproj", "{E892E773-582D-4E1B-8034-677243FB3B4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{A1FB2EE8-F2F6-4BDA-B4F0-715873B23462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1FB2EE8-F2F6-4BDA-B4F0-715873B23462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1FB2EE8-F2F6-4BDA-B4F0-715873B23462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E892E773-582D-4E1B-8034-677243FB3B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E892E773-582D-4E1B-8034-677243FB3B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E892E773-582D-4E1B-8034-677243FB3B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E892E773-582D-4E1B-8034-677243FB3B4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

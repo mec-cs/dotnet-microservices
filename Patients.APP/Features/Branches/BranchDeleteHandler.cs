@@ -6,10 +6,10 @@ using Patients.APP.Domain;
 
 namespace Patients.APP.Features.Branches
 {
-    public class BranchesDeleteRequest : Request, IRequest<CommandResponse> {}
+    public class BranchDeleteRequest : Request, IRequest<CommandResponse> {}
 
 
-    public class BranchDeleteHandler : Service<Branch>, IRequestHandler<BranchesDeleteRequest, CommandResponse>
+    public class BranchDeleteHandler : Service<Branch>, IRequestHandler<BranchDeleteRequest, CommandResponse>
     {
         public BranchDeleteHandler(DbContext db) : base(db) { }
     
@@ -18,7 +18,7 @@ namespace Patients.APP.Features.Branches
             return base.Query().Include(r => r.Doctors);
         }
 
-        public async Task<CommandResponse> Handle(BranchesDeleteRequest request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(BranchDeleteRequest request, CancellationToken cancellationToken)
         {
             var entity = await Query(false).SingleOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
             if (entity is null)

@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="MediatR" Version="13.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.11"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.10">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,9 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DotNetMicroservices.ServiceDefaults\DotNetMicroservices.ServiceDefaults.csproj" />
-      <ProjectReference Include="..\Locations.APP\Locations.APP.csproj" />
-      <ProjectReference Include="..\Patients.APP\Patients.APP.csproj" />
+        <ProjectReference Include="..\DotNetMicroservices.ServiceDefaults\DotNetMicroservices.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\Patients.APP\Patients.APP.csproj" />
     </ItemGroup>
 
 </Project>

@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Patients.APP.Features.Branches
 {
-    public class BranchesCreateRequest : Request, IRequest<CommandResponse>
+    public class BranchCreateRequest : Request, IRequest<CommandResponse>
     {
         [Required, StringLength(64)]
         public string Title { get; set; }
     
     }
 
-    public class BranchCreateHandler: Service<Domain.Branch>, IRequestHandler<BranchesCreateRequest, CommandResponse>
+    public class BranchCreateHandler: Service<Domain.Branch>, IRequestHandler<BranchCreateRequest, CommandResponse>
     {
         public BranchCreateHandler(DbContext db) : base(db) { }
 
-        public async Task<CommandResponse> Handle(BranchesCreateRequest request, CancellationToken cancellationToken)
+        public async Task<CommandResponse> Handle(BranchCreateRequest request, CancellationToken cancellationToken)
         {
             if (await Query().AnyAsync(branch => branch.Title == request.Title.Trim(), cancellationToken))
                 return Error("Branch with the same name exists!");
