@@ -24,6 +24,9 @@ namespace Patients.APP.Features.Patients
         
         public async Task<CommandResponse> Handle(PatientCreateRequest request, CancellationToken cancellationToken)
         {
+            if (await Query().AnyAsync(patient => patient.UserId == request.UserId, cancellationToken))
+                return Error("Patient with the same User ID exists!");
+            
             var entity = new Patient()
             {
                 Height = request.Height,
