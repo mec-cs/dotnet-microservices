@@ -1,3 +1,4 @@
+using Core.APP.Domain;
 using Core.APP.Models;
 using Core.APP.Services;
 using MediatR;
@@ -6,7 +7,10 @@ using Patients.APP.Domain;
 
 namespace Patients.APP.Features.Doctors
 {
-    public class DoctorQueryRequest : Request, IRequest<IQueryable<DoctorQueryResponse>> { }
+    public class PatientDto : Entity
+    {
+        public int DoctorCount { get; set; }
+    }
     
     public class DoctorQueryResponse : Response
     {
@@ -18,8 +22,10 @@ namespace Patients.APP.Features.Doctors
         
         public int PatientsCount { get; set; }
 
-        public string Patients { get; set; }
+        public List<PatientDto> Patients { get; set; }
     }
+    
+    public class DoctorQueryRequest : Request, IRequest<IQueryable<DoctorQueryResponse>> { }
     
     public class DoctorQueryHandler : Service<Doctor>, IRequestHandler<DoctorQueryRequest, IQueryable<DoctorQueryResponse>>
     {
@@ -43,7 +49,12 @@ namespace Patients.APP.Features.Doctors
                 BranchId = dr.BranchId,
                 
                 PatientsCount = dr.DoctorPatients.Count,
-                Patients = string.Join(", ", dr.DoctorPatients.Select(dp => dp.Patient.Id))
+                Patients = dr.DoctorPatients.Select(dp => new PatientDto
+                {
+                    Id = dp.PatientId,
+                    DoctorCount = dp.Patient.PatientDoctors.Count,
+                    Guid = dp.Patient.Guid
+                }).ToList()
             });
 
             return Task.FromResult(query);

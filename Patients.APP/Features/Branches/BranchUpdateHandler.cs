@@ -19,12 +19,12 @@ namespace Patients.APP.Features.Branches
 
         public async Task<CommandResponse> Handle(BranchUpdateRequest request, CancellationToken cancellationToken)
         {
-            if (await Query().AnyAsync(branch => branch.Id != request.Id && branch.Title == request.Title.Trim(), cancellationToken))
-                return Error("Branch with the same name exists!");
-            
             var entity = await Query(false).SingleOrDefaultAsync(branch => branch.Id == request.Id, cancellationToken);
             if (entity is null)
                 return Error("Branch not found!");
+            
+            if (await Query().AnyAsync(branch => branch.Id != request.Id && branch.Title == request.Title.Trim(), cancellationToken))
+                return Error("Branch with the same name exists!");
 
             entity.Title = request.Title.Trim();
 

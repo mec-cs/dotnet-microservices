@@ -8,9 +8,7 @@ namespace Patients.APP.Features.Patients
 {
     public class PatientQueryResponse : Response
     {
-        public int DoctorCount { get; set; }
-
-        public string Doctors { get; set; }
+        public string DoctorIds { get; set; }
     }
     
     public class PatientQueryRequest : Request, IRequest<IQueryable<PatientQueryResponse>> { }
@@ -33,8 +31,7 @@ namespace Patients.APP.Features.Patients
                 Id = p.Id,
                 Guid = p.Guid,
                 
-                DoctorCount = p.PatientDoctors.Count,
-                Doctors = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id))
+                DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id))
             });
 
             return Task.FromResult(query);

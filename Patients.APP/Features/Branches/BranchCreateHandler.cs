@@ -21,7 +21,7 @@ namespace Patients.APP.Features.Branches
         public async Task<CommandResponse> Handle(BranchCreateRequest request, CancellationToken cancellationToken)
         {
             if (await Query().AnyAsync(branch => branch.Title == request.Title.Trim(), cancellationToken))
-                return Error("Branch with the same Title exists!");
+                return Error("Branch with the same title exists!");
 
             var entity = new Domain.Branch
             {
