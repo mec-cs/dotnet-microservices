@@ -26,7 +26,7 @@ namespace Patients.APP.Features.Doctors
             
             Update(entity);
 
-            return Success("Doctor updated successfully.", entity.Id);
+            return Success("Doctor updated successfully.", entity.Id, entity.Guid);
         }
     }  
 }

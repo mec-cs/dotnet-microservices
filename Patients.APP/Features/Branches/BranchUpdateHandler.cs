@@ -30,7 +30,7 @@ namespace Patients.APP.Features.Branches
 
             Update(entity);
 
-            return Success("Branch updated successfully", entity.Id);
+            return Success("Branch updated successfully", entity.Id, entity.Guid);
         }
     }
 }

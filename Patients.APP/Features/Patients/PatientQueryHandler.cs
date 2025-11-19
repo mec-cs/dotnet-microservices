@@ -8,8 +8,6 @@ namespace Patients.APP.Features.Patients
 {
     public class PatientQueryResponse : Response
     {
-        public string Name { get; set; }
-        
         public int DoctorCount { get; set; }
 
         public string Doctors { get; set; }

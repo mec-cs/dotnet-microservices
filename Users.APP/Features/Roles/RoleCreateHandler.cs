@@ -31,7 +31,7 @@ namespace Users.APP.Features.Roles
 
             Create(entity);
 
-            return Success("Role created successfully.", entity.Id);
+            return Success("Role created successfully.", entity.Id, entity.Guid);
         }
     }
 }

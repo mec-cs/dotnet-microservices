@@ -32,7 +32,7 @@ namespace Users.APP.Features.Groups
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            return Success("Group deleted successfully.", entity.Id);
+            return Success("Group deleted successfully.", entity.Id, entity.Guid);
         }
     }
 }

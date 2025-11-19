@@ -3,6 +3,7 @@ using Core.APP.Models;
 using Core.APP.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Patients.APP.Domain;
 
 namespace Patients.APP.Features.Branches
 {
@@ -13,14 +14,14 @@ namespace Patients.APP.Features.Branches
     
     }
 
-    public class BranchCreateHandler: Service<Domain.Branch>, IRequestHandler<BranchCreateRequest, CommandResponse>
+    public class BranchCreateHandler: Service<Branch>, IRequestHandler<BranchCreateRequest, CommandResponse>
     {
         public BranchCreateHandler(DbContext db) : base(db) { }
 
         public async Task<CommandResponse> Handle(BranchCreateRequest request, CancellationToken cancellationToken)
         {
             if (await Query().AnyAsync(branch => branch.Title == request.Title.Trim(), cancellationToken))
-                return Error("Branch with the same name exists!");
+                return Error("Branch with the same Title exists!");
 
             var entity = new Domain.Branch
             {
@@ -29,7 +30,7 @@ namespace Patients.APP.Features.Branches
 
             Create(entity);
 
-            return Success("Branch created successfully.", entity.Id);
+            return Success("Branch created successfully.", entity.Id, entity.Guid);
         }
     }
 }

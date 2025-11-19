@@ -5,7 +5,7 @@ namespace Core.APP.Models
         public bool IsSuccessful { get; }
         public string Message { get; }
 
-        public CommandResponse(bool isSuccessful, string message = "", int id = 0) : base(id)
+        public CommandResponse(bool isSuccessful, string message = "", int id = 0, string guid = "") : base(id, guid)
         {
             IsSuccessful = isSuccessful;
             Message = message;

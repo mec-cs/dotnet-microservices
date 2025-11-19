@@ -27,7 +27,7 @@ namespace Patients.APP.Features.Patients
             
             Delete(entity);
 
-            return Success("Patient deleted successfully.", entity.Id);
+            return Success("Patient deleted successfully.", entity.Id, entity.Guid);
         }
     }    
 }

@@ -32,7 +32,7 @@ namespace Locations.APP.Features.City
 
             Update(entity);
 
-            return Success("City updated successfully.", entity.Id);
+            return Success("City updated successfully.", entity.Id, entity.Guid);
         }
     }
 }

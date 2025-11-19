@@ -72,7 +72,7 @@ namespace Users.APP.Features.Users
 
             Create(entity);
 
-            return Success("User created successfully.", entity.Id);
+            return Success("User created successfully.", entity.Id, entity.Guid);
         }
     }
 }

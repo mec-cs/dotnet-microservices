@@ -29,7 +29,7 @@ namespace Locations.APP.Features.Country
 
             Update(entity);
 
-            return Success("Country updated successfully", entity.Id);
+            return Success("Country updated successfully", entity.Id, entity.Guid);
         }
     }
 }

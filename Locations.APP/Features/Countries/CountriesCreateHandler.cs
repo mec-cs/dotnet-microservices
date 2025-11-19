@@ -28,7 +28,7 @@ namespace Locations.APP.Features.Country
 
             Create(entity);
 
-            return Success("Country created successfully", entity.Id);
+            return Success("Country created successfully", entity.Id, entity.Guid);
         }
     }
 }

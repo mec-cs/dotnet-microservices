@@ -36,7 +36,7 @@ namespace Users.APP.Features.Groups
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            return Success("Group created successfully.", entity.Id);
+            return Success("Group created successfully.", entity.Id, entity.Guid);
         }
     }
 }

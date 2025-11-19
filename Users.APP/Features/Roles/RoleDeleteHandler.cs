@@ -29,7 +29,7 @@ namespace Users.APP.Features.Roles
 
             Delete(entity);
 
-            return Success("Role deleted successfully.", entity.Id);
+            return Success("Role deleted successfully.", entity.Id, entity.Guid);
         }
     }
 }

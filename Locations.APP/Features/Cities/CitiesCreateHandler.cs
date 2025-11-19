@@ -33,7 +33,7 @@ namespace Locations.APP.Features.City
 
             Create(entity);
 
-            return Success("City created successfully.", entity.Id);
+            return Success("City created successfully.", entity.Id, entity.Guid);
         }
     }
 }

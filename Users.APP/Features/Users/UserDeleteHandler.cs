@@ -28,7 +28,7 @@ namespace Users.APP.Features.Users
 
             Delete(entity);
 
-            return Success("User deleted successfully.", entity.Id);
+            return Success("User deleted successfully.", entity.Id, entity.Guid);
         }
     }
 }

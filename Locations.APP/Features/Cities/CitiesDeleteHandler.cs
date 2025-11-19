@@ -20,7 +20,7 @@ namespace Locations.APP.Features.City
 
             Delete(entity);
 
-            return Success("City deleted successfully", entity.Id);
+            return Success("City deleted successfully", entity.Id, entity.Guid);
         }
     }
 }

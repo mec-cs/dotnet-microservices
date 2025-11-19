@@ -26,7 +26,7 @@ namespace Core.APP.Services
             CultureInfo = new CultureInfo("en-US");
         }
         
-        protected CommandResponse Success(string message, int id) => new CommandResponse(true, message, id);
+        protected CommandResponse Success(string message, int id, string guid) => new CommandResponse(true, message, id, guid);
         
         protected CommandResponse Error(string message) => new CommandResponse(false, message);
     }

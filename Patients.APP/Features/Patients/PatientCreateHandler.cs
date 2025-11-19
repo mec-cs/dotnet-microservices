@@ -34,7 +34,7 @@ namespace Patients.APP.Features.Patients
 
             Create(entity);
 
-            return Success("Patient created successfully.", entity.Id);
+            return Success("Patient created successfully.", entity.Id, entity.Guid);
         }
     }
     

@@ -76,7 +76,7 @@ namespace Users.APP.Features.Users
 
             Update(entity);
 
-            return Success("User updated successfully.", entity.Id);
+            return Success("User updated successfully.", entity.Id, entity.Guid);
         }
     }
 }

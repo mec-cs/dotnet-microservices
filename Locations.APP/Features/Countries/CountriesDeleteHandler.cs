@@ -25,7 +25,7 @@ namespace Locations.APP.Features.Country
             
             Delete(entity); // it will throw db level exception if any
 
-            return Success("Country deleted successfully.", entity.Id);
+            return Success("Country deleted successfully.", entity.Id, entity.Guid);
         }
     }
 }

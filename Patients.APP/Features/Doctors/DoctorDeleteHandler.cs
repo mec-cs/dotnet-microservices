@@ -29,7 +29,7 @@ namespace Patients.APP.Features.Doctors
             
             Delete(entity);
 
-            return Success("Doctor deleted successfully.", entity.Id);
+            return Success("Doctor deleted successfully.", entity.Id, entity.Guid);
         }
     }    
 }

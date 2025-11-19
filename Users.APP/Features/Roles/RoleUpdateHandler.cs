@@ -32,7 +32,7 @@ namespace Users.APP.Features.Roles
             
             Update(entity);
 
-            return Success("Role updated successfully.", entity.Id);
+            return Success("Role updated successfully.", entity.Id, entity.Guid);
         }
     }
 }

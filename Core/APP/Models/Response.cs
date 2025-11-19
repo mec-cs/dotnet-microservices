@@ -6,9 +6,10 @@ namespace Core.APP.Models
         
         public virtual string Guid { get; set; }
         
-        protected Response(int id)
+        protected Response(int id, string guid)
         {
             Id = id;
+            Guid = guid;
         }
         
         protected Response() {}
