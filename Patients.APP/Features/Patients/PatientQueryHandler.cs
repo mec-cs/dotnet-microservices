@@ -9,6 +9,10 @@ namespace Patients.APP.Features.Patients
     public class PatientQueryResponse : Response
     {
         public string DoctorIds { get; set; }
+        
+        public decimal? Height  { get; set; }
+        
+        public decimal? Weight  { get; set; }
     }
     
     public class PatientQueryRequest : Request, IRequest<IQueryable<PatientQueryResponse>> { }
@@ -29,6 +33,8 @@ namespace Patients.APP.Features.Patients
             var query = Query().Select(p => new PatientQueryResponse()
             {
                 Id = p.Id,
+                Height = p.Height,
+                Weight = p.Weight,
                 Guid = p.Guid,
                 
                 DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id))
