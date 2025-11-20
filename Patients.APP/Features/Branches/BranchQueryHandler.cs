@@ -31,7 +31,7 @@ namespace Patients.APP.Features.Branches
         {
             return base.Query(isNoTracking)
                 .Include(b => b.Doctors)
-                .OrderBy(r => r.Title);
+                .OrderBy(b => b.Title);
         }
         
         public Task<IQueryable<BranchQueryResponse>> Handle(BranchQueryRequest request, CancellationToken cancellationToken)

@@ -31,7 +31,7 @@ namespace Patients.APP.Features.Branches
 
             Delete(entity);
 
-            return Success("Role deleted successfully.", entity.Id, entity.Guid);
+                return Success("Branch deleted successfully.", entity.Id, entity.Guid);
         }
     
     
