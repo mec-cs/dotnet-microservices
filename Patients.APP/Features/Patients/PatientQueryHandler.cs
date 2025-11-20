@@ -8,6 +8,8 @@ namespace Patients.APP.Features.Patients
 {
     public class PatientQueryResponse : Response
     {
+        public int UserId { get; set; }
+        public int? GroupId { get; set; }
         public string DoctorIds { get; set; }
         
         public List<int> DoctorIdsList { get; set; }
@@ -35,9 +37,11 @@ namespace Patients.APP.Features.Patients
             var query = Query().Select(p => new PatientQueryResponse()
             {
                 Id = p.Id,
+                GroupId = p.GroupId,
                 Height = p.Height,
                 Weight = p.Weight,
                 Guid = p.Guid,
+                UserId = p.UserId,
                 
                 DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id)),
                 DoctorIdsList = p.DoctorIds

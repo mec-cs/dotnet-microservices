@@ -24,7 +24,10 @@ namespace Patients.APP.Features.Branches
             if (entity is null)
                 return Error("Branch not found!");
 
-            Delete(entity.Doctors);
+            if (entity.Doctors.Any())
+            {
+                return Error("Branch has doctors please delete them first!");
+            }
 
             Delete(entity);
 
