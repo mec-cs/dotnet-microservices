@@ -16,6 +16,8 @@ namespace Patients.APP.Features.Patients
         public int UserId { get; set; }
         
         public int? GroupId { get; set; }
+
+        public List<int> DoctorIds { get; set; } = new List<int>();
     }
 
     public class PatientCreateHandler : Service<Patient>, IRequestHandler<PatientCreateRequest, CommandResponse>
@@ -33,6 +35,7 @@ namespace Patients.APP.Features.Patients
                 Weight = request.Weight,
                 UserId = request.UserId,
                 GroupId = request.GroupId,
+                DoctorIds = request.DoctorIds
             };
 
             Create(entity);

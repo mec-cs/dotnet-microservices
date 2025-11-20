@@ -16,6 +16,8 @@ namespace Patients.APP.Features.Doctors
         
         [Required]
         public int BranchId { get; set; }
+
+        public List<int> PatientIds { get; set; } = new List<int>();
     }
     
     public class DoctorCreateHandler : Service<Doctor>, IRequestHandler<DoctorCreateRequest, CommandResponse>
@@ -33,7 +35,8 @@ namespace Patients.APP.Features.Doctors
             {
                 UserId = request.UserId,
                 GroupId = request.GroupId,
-                BranchId = request.BranchId
+                BranchId = request.BranchId,
+                PatientIds = request.PatientIds
             };
 
             Create(entity);

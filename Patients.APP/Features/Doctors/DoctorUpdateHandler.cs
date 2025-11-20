@@ -10,11 +10,18 @@ namespace Patients.APP.Features.Doctors
     public class DoctorUpdateRequest : Request, IRequest<CommandResponse>
     {
         public int UserId { get; set; }
+
+        public List<int> PatientIds { get; set; } = new List<int>();
     }
     
     public class DoctorUpdateHandler : Service<Doctor>, IRequestHandler<DoctorUpdateRequest, CommandResponse>
     {
         public DoctorUpdateHandler(DbContext db) : base(db) { }
+
+        protected override IQueryable<Doctor> Query(bool isNoTracking = true)
+        {
+            return base.Query(isNoTracking).Include(d => d.DoctorPatients);
+        }
 
         public async Task<CommandResponse> Handle(DoctorUpdateRequest request, CancellationToken cancellationToken)
         {
@@ -24,6 +31,11 @@ namespace Patients.APP.Features.Doctors
             
             if (await Query().AnyAsync(r => r.Id != request.Id && r.UserId == request.UserId, cancellationToken))
                 return Error("Doctor with the same User ID exists!");
+            
+            Delete(entity.DoctorPatients);
+            
+            entity.UserId = request.UserId;
+            entity.PatientIds = request.PatientIds;
             
             Update(entity);
 

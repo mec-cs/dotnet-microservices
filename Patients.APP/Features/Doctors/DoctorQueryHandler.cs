@@ -22,6 +22,8 @@ namespace Patients.APP.Features.Doctors
         
         public int PatientsCount { get; set; }
 
+        public List<int> PatientIds { get; set; }
+
         public List<PatientDto> Patients { get; set; }
     }
     
@@ -49,6 +51,7 @@ namespace Patients.APP.Features.Doctors
                 BranchId = dr.BranchId,
                 
                 PatientsCount = dr.DoctorPatients.Count,
+                PatientIds = dr.PatientIds,
                 Patients = dr.DoctorPatients.Select(dp => new PatientDto
                 {
                     Id = dp.PatientId,

@@ -10,6 +10,8 @@ namespace Patients.APP.Features.Patients
     {
         public string DoctorIds { get; set; }
         
+        public List<int> DoctorIdsList { get; set; }
+        
         public decimal? Height  { get; set; }
         
         public decimal? Weight  { get; set; }
@@ -37,7 +39,8 @@ namespace Patients.APP.Features.Patients
                 Weight = p.Weight,
                 Guid = p.Guid,
                 
-                DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id))
+                DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id)),
+                DoctorIdsList = p.DoctorIds
             });
 
             return Task.FromResult(query);

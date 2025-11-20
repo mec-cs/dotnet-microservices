@@ -66,10 +66,11 @@ namespace Patients.APP.Migrations
                 name: "DoctorPatients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     DoctorId = table.Column<int>(type: "INTEGER", nullable: false),
                     PatientId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Guid = table.Column<string>(type: "TEXT", nullable: true)
+                    Guid = table.Column<string>(type: "TEXT", nullable: false, defaultValue: new Guid().ToString())
                 },
                 constraints: table =>
                 {
