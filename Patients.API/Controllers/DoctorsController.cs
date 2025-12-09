@@ -1,5 +1,6 @@
 using Core.APP.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Patients.APP.Features.Doctors;
@@ -8,6 +9,7 @@ namespace Patients.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class DoctorsController : ControllerBase
     {
         private readonly ILogger<DoctorsController> _logger;
@@ -21,6 +23,7 @@ namespace Patients.API.Controllers
         
         
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try
@@ -42,6 +45,7 @@ namespace Patients.API.Controllers
         
         
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int id)
         {
             try

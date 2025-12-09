@@ -1,6 +1,7 @@
 using Core.APP.Models;
 using Locations.APP.Features.City;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace Locations.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CitiesController : ControllerBase
     {
         private readonly ILogger<CitiesController> _logger;
@@ -22,6 +24,7 @@ namespace Locations.API.Controllers
         
         // GET: api/Cities
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try
@@ -44,6 +47,7 @@ namespace Locations.API.Controllers
         
         // GET: api/Cities/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -139,6 +143,7 @@ namespace Locations.API.Controllers
 
         
         [HttpGet("[action]/{countryId}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetByCountryId(int countryId)
         {
             var response = await _mediator.Send(new CityQueryRequest() { CountryId = countryId });

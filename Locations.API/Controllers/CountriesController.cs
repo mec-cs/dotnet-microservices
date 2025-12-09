@@ -1,6 +1,7 @@
 using Core.APP.Models;
 using Locations.APP.Features.Country;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,6 +67,7 @@ namespace Locations.API.Controllers
         
 		// POST: api/Countries
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post(CountryCreateRequest request)
         {
             try
@@ -92,6 +94,7 @@ namespace Locations.API.Controllers
         
         // PUT: api/Countries
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put(CountryUpdateRequest request)
         {
             try
@@ -118,6 +121,7 @@ namespace Locations.API.Controllers
         
         // DELETE: api/Countries/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try

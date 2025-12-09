@@ -4,11 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Core.APP.Models;
 using Users.APP.Features.Roles;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Users.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class RolesController : ControllerBase
     {
         private readonly ILogger<RolesController> _logger;
