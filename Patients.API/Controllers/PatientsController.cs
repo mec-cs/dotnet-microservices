@@ -2,7 +2,6 @@ using Core.APP.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Patients.APP.Features.Patients;
 
 namespace Patients.API.Controllers
@@ -24,13 +23,13 @@ namespace Patients.API.Controllers
         
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromServices] IConfiguration configuration)
         {
             try
             {
-                var response = await _mediator.Send(new PatientQueryRequest());
-
-                var list = await response.ToListAsync();
+                var request = new PatientUserQueryRequest { UsersApiUrl = configuration["UsersApiUrl"] };
+                var list = await _mediator.Send(request);
+                
                 if (list.Any())
                     return Ok(list);
                 
@@ -46,13 +45,14 @@ namespace Patients.API.Controllers
         
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(int id, [FromServices] IConfiguration configuration)
         {
             try
             {
-                var response = await _mediator.Send(new PatientQueryRequest());
+                var request = new PatientUserQueryRequest { UsersApiUrl = configuration["UsersApiUrl"] };
+                var list = await _mediator.Send(request);
                 
-                var item = await response.SingleOrDefaultAsync(r => r.Id == id);
+                var item = list.FirstOrDefault(r => r.Id == id);
                 if (item is not null)
                     return Ok(item);
                 
@@ -67,12 +67,13 @@ namespace Patients.API.Controllers
 
 		
         [HttpPost]
-        public async Task<IActionResult> Post(PatientCreateRequest request)
+        public async Task<IActionResult> Post(PatientCreateRequest request, [FromServices] IConfiguration configuration)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    request.UsersApiUrl = configuration["UsersApiUrl"];
                     var response = await _mediator.Send(request);
                     if (response.IsSuccessful)
                     {
@@ -93,12 +94,13 @@ namespace Patients.API.Controllers
 
         
         [HttpPut]
-        public async Task<IActionResult> Put(PatientUpdateRequest request)
+        public async Task<IActionResult> Put(PatientUpdateRequest request, [FromServices] IConfiguration configuration)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    request.UsersApiUrl = configuration["UsersApiUrl"];
                     var response = await _mediator.Send(request);
                     if (response.IsSuccessful)
                     {

@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Core.APP.Models;
 using Core.APP.Services;
+using Core.APP.Services.HTTP;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Patients.APP.Domain;
+using Patients.APP.Features.Shared;
 
 namespace Patients.APP.Features.Doctors
 {
@@ -12,11 +15,19 @@ namespace Patients.APP.Features.Doctors
         public int UserId { get; set; }
 
         public List<int> PatientIds { get; set; } = new List<int>();
+
+        [JsonIgnore]
+        public string UsersApiUrl { get; set; }
     }
     
     public class DoctorUpdateHandler : Service<Doctor>, IRequestHandler<DoctorUpdateRequest, CommandResponse>
     {
-        public DoctorUpdateHandler(DbContext db) : base(db) { }
+        private readonly HttpServiceBase _httpService;
+
+        public DoctorUpdateHandler(DbContext db, HttpServiceBase httpService) : base(db) 
+        {
+            _httpService = httpService;
+        }
 
         protected override IQueryable<Doctor> Query(bool isNoTracking = true)
         {
@@ -31,6 +42,10 @@ namespace Patients.APP.Features.Doctors
             
             if (await Query().AnyAsync(r => r.Id != request.Id && r.UserId == request.UserId, cancellationToken))
                 return Error("Doctor with the same User ID exists!");
+
+            var user = await _httpService.GetFromJson<UserApiResponse>(request.UsersApiUrl, request.UserId, cancellationToken);
+            if (user == null)
+                return Error("User not found!");
             
             Delete(entity.DoctorPatients);
             

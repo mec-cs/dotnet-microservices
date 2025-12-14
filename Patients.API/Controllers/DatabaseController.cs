@@ -77,11 +77,11 @@ namespace Patients.API.Controllers
             
             _db.SaveChanges();
 
-            // Create Doctors
+            // Create Doctors (UserIds 3-8 correspond to doctor users in UsersDB)
             var doctor1 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 1,
+                UserId = 3,
                 GroupId = 1,
                 BranchId = cardiologyBranch.Id
             };
@@ -89,7 +89,7 @@ namespace Patients.API.Controllers
             var doctor2 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 2,
+                UserId = 4,
                 GroupId = 1,
                 BranchId = cardiologyBranch.Id
             };
@@ -97,7 +97,7 @@ namespace Patients.API.Controllers
             var doctor3 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 3,
+                UserId = 5,
                 GroupId = 1,
                 BranchId = neurologyBranch.Id
             };
@@ -105,7 +105,7 @@ namespace Patients.API.Controllers
             var doctor4 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 4,
+                UserId = 6,
                 GroupId = 1,
                 BranchId = pediatricsBranch.Id
             };
@@ -113,7 +113,7 @@ namespace Patients.API.Controllers
             var doctor5 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 5,
+                UserId = 7,
                 GroupId = 1,
                 BranchId = orthopedicsBranch.Id
             };
@@ -121,7 +121,7 @@ namespace Patients.API.Controllers
             var doctor6 = new Doctor
             {
                 Guid = Guid.NewGuid().ToString(),
-                UserId = 6,
+                UserId = 8,
                 GroupId = 1,
                 BranchId = dermatologyBranch.Id
             };
@@ -135,13 +135,13 @@ namespace Patients.API.Controllers
             
             _db.SaveChanges();
 
-            // Create Patients
+            // Create Patients (UserIds 9-16 correspond to patient users in UsersDB)
             var patient1 = new Patient
             {
                 Guid = Guid.NewGuid().ToString(),
                 Height = 165.5m,
                 Weight = 68.2m,
-                UserId = 10,
+                UserId = 9,
                 GroupId = 1
             };
             
@@ -150,7 +150,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 178.0m,
                 Weight = 82.5m,
-                UserId = 11,
+                UserId = 10,
                 GroupId = 1
             };
             
@@ -159,7 +159,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 160.0m,
                 Weight = 55.8m,
-                UserId = 12,
+                UserId = 11,
                 GroupId = 1
             };
             
@@ -168,7 +168,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 175.3m,
                 Weight = 75.0m,
-                UserId = 13,
+                UserId = 12,
                 GroupId = 1
             };
             
@@ -177,7 +177,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 162.7m,
                 Weight = 60.3m,
-                UserId = 14,
+                UserId = 13,
                 GroupId = 1
             };
             
@@ -186,7 +186,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 180.5m,
                 Weight = 88.9m,
-                UserId = 15,
+                UserId = 14,
                 GroupId = 1
             };
             
@@ -195,7 +195,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 158.2m,
                 Weight = 52.4m,
-                UserId = 16,
+                UserId = 15,
                 GroupId = 1
             };
             
@@ -204,7 +204,7 @@ namespace Patients.API.Controllers
                 Guid = Guid.NewGuid().ToString(),
                 Height = 172.8m,
                 Weight = 79.6m,
-                UserId = 17,
+                UserId = 16,
                 GroupId = 1
             };
 

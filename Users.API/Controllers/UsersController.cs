@@ -22,7 +22,7 @@ namespace Users.API.Controllers
         }
         
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try
@@ -43,7 +43,7 @@ namespace Users.API.Controllers
         }
         
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int id)
         {
             try

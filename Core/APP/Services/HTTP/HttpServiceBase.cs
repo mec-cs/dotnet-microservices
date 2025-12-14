@@ -41,7 +41,13 @@ namespace Core.APP.Services.HTTP
             where TResponse : Response, new()
         {
             var httpClient = CreateHttpClient();
-            var item = await httpClient.GetFromJsonAsync<TResponse>($"{url}/{id}", cancellationToken);
+            var response = await httpClient.GetAsync($"{url}/{id}", cancellationToken);
+            
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                return null;
+            
+            response.EnsureSuccessStatusCode();
+            var item = await response.Content.ReadFromJsonAsync<TResponse>(cancellationToken);
             return item;
         }
 
