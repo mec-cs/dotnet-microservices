@@ -1,12 +1,12 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/weatherforecast",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/users",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/test/users",
@@ -14,11 +14,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/users",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/users",
@@ -26,11 +26,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/users/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/users/{id}",
@@ -38,11 +38,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/users/GetFiltered",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/users/GetFiltered",
@@ -50,11 +50,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/groups",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/groups",
@@ -62,11 +62,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/groups/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/groups/{id}",
@@ -74,11 +74,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/roles",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/roles",
@@ -86,11 +86,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/roles/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/roles/{id}",
@@ -98,11 +98,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/token",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/token",
@@ -110,23 +110,23 @@
     },
     {
       "DownstreamPathTemplate": "/api/refreshtoken",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7092
+          "Host": "users-api",
+          "Port": 5277
         }
       ],
       "UpstreamPathTemplate": "/api/refreshtoken",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
-      "DownstreamPathTemplate": "/weatherforecast",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/cities",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/test/locations",
@@ -134,11 +134,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/countries",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/api/countries",
@@ -146,11 +146,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/countries/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/api/countries/{id}",
@@ -158,11 +158,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/cities",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/api/cities",
@@ -170,11 +170,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/cities/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/api/cities/{id}",
@@ -182,23 +182,23 @@
     },
     {
       "DownstreamPathTemplate": "/api/cities/GetByCountryId/{countryId}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7196
+          "Host": "locations-api",
+          "Port": 5168
         }
       ],
       "UpstreamPathTemplate": "/api/cities/GetByCountryId/{countryId}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/weatherforecast",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/patients",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/test/patients",
@@ -206,11 +206,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/patients",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/patients",
@@ -218,11 +218,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/patients/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/patients/{id}",
@@ -230,11 +230,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/branches",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/branches",
@@ -242,11 +242,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/branches/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/branches/{id}",
@@ -254,11 +254,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/doctors",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/doctors",
@@ -266,11 +266,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/doctors/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/doctors/{id}",
@@ -278,11 +278,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/SeedDb",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7011
+          "Host": "patients-api",
+          "Port": 5063
         }
       ],
       "UpstreamPathTemplate": "/api/SeedDb",
@@ -290,6 +290,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7237"
+    "BaseUrl": "http://localhost:5055"
   }
 }

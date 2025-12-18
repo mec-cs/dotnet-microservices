@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  users-api:
+    image: users.api
+    build:
+      context: .
+      dockerfile: Users.API/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5277
+    ports:
+      - "5277:5277"
+    volumes:
+      - ./Users.API/UsersDB:/app/UsersDB
+
+  locations-api:
+    image: locations.api
+    build:
+      context: .
+      dockerfile: Locations.API/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5168
+    ports:
+      - "5168:5168"
+    volumes:
+      - ./Locations.API/LocationsDB:/app/LocationsDB
+
+  patients-api:
+    image: patients.api
+    build:
+      context: .
+      dockerfile: Patients.API/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5063
+      UsersApiUrl: http://users-api:5277/api/Users
+    ports:
+      - "5063:5063"
+    volumes:
+      - ./Patients.API/PatientsDB:/app/PatientsDB
+    depends_on:
+      - users-api
+
+  gateway-api:
+    image: gateway.api
+    build:
+      context: .
+      dockerfile: Gateway.API/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5055
+    ports:
+      - "5055:5055"
+    depends_on:
+      - users-api
+      - locations-api
+      - patients-api
+
