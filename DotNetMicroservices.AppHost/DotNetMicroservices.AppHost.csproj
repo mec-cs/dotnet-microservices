@@ -18,6 +18,7 @@
       <ProjectReference Include="..\Locations.API\Locations.API.csproj" />
       <ProjectReference Include="..\Patients.API\Patients.API.csproj" />
       <ProjectReference Include="..\Users.API\Users.API.csproj" />
+      <ProjectReference Include="..\Gateway.API\Gateway.API.csproj" />
     </ItemGroup>
 
 </Project>
