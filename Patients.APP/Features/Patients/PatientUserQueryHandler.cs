@@ -20,6 +20,10 @@ namespace Patients.APP.Features.Patients
         public decimal? Height  { get; set; }
         
         public decimal? Weight  { get; set; }
+
+        public string HeightF { get; set; }
+        
+        public string WeightF { get; set; }
         
         public UserBasicInfo User { get; set; }
     }
@@ -54,6 +58,8 @@ namespace Patients.APP.Features.Patients
                 GroupId = p.GroupId,
                 Height = p.Height,
                 Weight = p.Weight,
+                HeightF = p.Height.HasValue ? p.Height.Value.ToString("N1") : string.Empty,
+                WeightF = p.Weight.HasValue ? p.Weight.Value.ToString("N1") : string.Empty,
                 Guid = p.Guid,
                 UserId = p.UserId,
                 DoctorIds = string.Join(", ", p.PatientDoctors.Select(pd => pd.Doctor.Id)),
